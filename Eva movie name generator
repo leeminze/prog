@@ -1,0 +1,42 @@
+import random, string
+
+level=0
+symbol=["+","-","÷","×","√"]
+minus=["","-"]
+can=["Can","Could","Will","Would","Shall","Should","May","Might","Must"]
+verbs=['Fuck','Shit','Piss','Overcome','Die','Survive','Grow','Live','Advance','Redo','Undo','Return','Respawn','Reincarnate','Fly','Levitate','Remember','Win','Lose','Realise','Notice','Learn','Dine','Eat','Consume','Rewind','Write','Draw','Arrive','Depart','Move']
+super="⁰¹²³⁴⁵⁶⁷⁸⁹⋅⁻"
+regular="0123456789.-"
+translator=str.maketrans(regular,super)
+def num ():
+    return(random.randint(1,9))
+    
+def sym ():
+    return(symbol[random.randint(0,3)])
+    
+def minum ():
+    return(minus[random.randint(0,1)])
+    
+def printer (nom):
+    print ("Evangelion", end="")
+    z=0
+    for x in range(1,nom):
+        if (x==1):
+            print (" " + str(num()) + ".0", end="")
+        else:
+            y=random.randint(1,99)
+            a=20
+            if (z==1):
+                y=100
+            if (y<=a):
+                terg=(minum() + str(num()) + ".0")
+                print (terg.translate(translator), end="")
+                z=1
+            else:
+                print (sym() + str(num())+ ".0", end="")
+                z=0
+        print (end="")
+    print (": You",random.choice(can),"(Not)", random.choice(verbs),"\n")
+print ('what level do you wish to generate?')
+level=input()
+printer(int(level))
